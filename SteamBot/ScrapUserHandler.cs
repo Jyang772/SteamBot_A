@@ -177,7 +177,7 @@ namespace SteamBot
             Bot.SteamFriends.SetPersonaState(EPersonaState.Busy);
             ReInit();
             Bot.log.Warn("Opened trade with user.");
-            Trade.SendMessage("Welcome to the public scrapbanking bot (v" + BotVersion + ")! This bot buys 2 weapons for 1 scrap or sells 2 weapons for 1 scrap. If you are looking to BUY weapons, type \"buy\", otherwise you can simply add your weapons and I will do the rest.");
+            Trade.SendMessage("Welcome to the public scrapbanking bot (v" + BotVersion + ")! This bot buys 2 weapons for 1 scrap or sells 1 weapon for 1 scrap. If you are looking to BUY weapons, type \"buy\", otherwise you can simply add your weapons and I will do the rest.");
             TradeCountInventory(true);
             Trade.SendMessage("Please add your items now. Type \"buy\" if you are buying weapons. You have 5 minutes to complete the trade or you will be kicked.");
         }
@@ -750,7 +750,7 @@ namespace SteamBot
 
         private void OnInviteTimerElapsed(object source, ElapsedEventArgs e, EChatEntryType type)
         {
-            Bot.SteamFriends.SendChatMessage(OtherSID, EChatEntryType.ChatMsg, "Hi. You have added The public scrapbanking bot! I buy two weapons for one scrap and sell two weapons for one scrap. Check my backpack if you are buying weapons, and then trade me to begin!");
+            Bot.SteamFriends.SendChatMessage(OtherSID, EChatEntryType.ChatMsg, "Hi. You have added The public scrapbanking bot! I buy two weapons for one scrap and sell one weapon for one scrap. Check my backpack if you are buying weapons, and then trade me to begin!");
             Bot.log.Success("Sent welcome message.");
             inviteMsgTimer.Enabled = false;
             inviteMsgTimer.Stop();
@@ -955,7 +955,6 @@ namespace SteamBot
 
 
 }
-
 
 
 
