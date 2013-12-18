@@ -209,7 +209,7 @@ namespace SteamBot
 
                     if (item.Defindex == 725)
                         userTicketAdded++;
-                    else
+                    else if(item.Defindex != 5000 || item.Defindex != 5001 || item.Defindex != 5002)
                         userWepAdded++;
 
                     if (userTicketAdded != 0 && item.Defindex == 725 && donate == false)
@@ -544,7 +544,7 @@ namespace SteamBot
                 Trade.SendMessage("Back from Reduction_Add()");
                 change = true;
             }
-            if (UserMetalAdded > ticketSell * botTicketAdded && botTicketAdded > 0 && change == false && donate == false)
+            else if (UserMetalAdded > ticketSell * botTicketAdded && botTicketAdded > 0 && change == false && donate == false)
             {
 
                 Trade.SendMessage("Warning: You have overpayed!");
@@ -938,7 +938,6 @@ namespace SteamBot
 
 
 }
-
 
 
 
