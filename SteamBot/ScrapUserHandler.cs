@@ -731,6 +731,8 @@ namespace SteamBot
             InventoryTickets = 0;
             WhileLoop = 0;
             InvalidItem = 0;
+            donate = false;
+            
 
             userScrapAdded = 0;
             userWepAdded = 0;
