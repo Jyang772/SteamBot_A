@@ -750,7 +750,7 @@ namespace SteamBot
 
         private void OnInviteTimerElapsed(object source, ElapsedEventArgs e, EChatEntryType type)
         {
-            Bot.SteamFriends.SendChatMessage(OtherSID, EChatEntryType.ChatMsg, "Hi. You have added The public scrapbanking bot! I buy two weapons for one scrap and sell one weapon for one scrap. Check my backpack if you are buying weapons, and then trade me to begin!");
+            Bot.SteamFriends.SendChatMessage(OtherSID, EChatEntryType.ChatMsg, "Hi. You have added The public scrapbanking bot! I buy two weapons for one scrap and sell two weapons for one scrap. Check my backpack if you are buying weapons, and then trade me to begin!");
             Bot.log.Success("Sent welcome message.");
             inviteMsgTimer.Enabled = false;
             inviteMsgTimer.Stop();
