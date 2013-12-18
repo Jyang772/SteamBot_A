@@ -717,6 +717,21 @@ namespace SteamBot
 
         public void ReInit()
         {
+            UserMetalAdded = 0;
+            UserScrapAdded = 0;
+            UserRecAdded = 0;
+            UserRefAdded = 0;
+            BotMetalAdded = 0;
+            BotRecAdded = 0;
+            BotRefAdded = 0;
+            InventoryMetal = 0;
+            InventoryScrap = 0;
+            InventoryRec = 0;
+            InventoryRef = 0;
+            InventoryTickets = 0;
+            WhileLoop = 0;
+            InvalidItem = 0;
+
             userScrapAdded = 0;
             userWepAdded = 0;
             botScrapAdded = 0;
