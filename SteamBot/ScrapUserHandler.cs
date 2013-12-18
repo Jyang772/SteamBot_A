@@ -212,7 +212,7 @@ namespace SteamBot
                     else
                         userWepAdded++;
 
-                    if (userTicketAdded != 0 && item.Defindex == 725)
+                    if (userTicketAdded != 0 && item.Defindex == 725 && donate == false)
                     {
 
                         bool DoneAddingMetal = false;
@@ -326,7 +326,7 @@ namespace SteamBot
                     if (item.Defindex != 725)
                         userWepAdded--;
 
-                    if (item.Defindex == 725)
+                    if (item.Defindex == 725 && donate == false)
                     {
                         int Total = BotMetalAdded;
                         bool DoneAddingMetal = false;
