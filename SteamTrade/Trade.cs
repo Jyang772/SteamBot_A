@@ -257,7 +257,7 @@ namespace SteamTrade
             List<Inventory.Item> items = MyInventory.GetItemsByDefindex (defindex);
             foreach (Inventory.Item item in items)
             {
-                if (item != null && !myOfferedItems.ContainsValue(item.Id) && !item.IsNotTradeable && item.Quality == "6" || item.Defindex == 725)
+                if (item != null && !myOfferedItems.ContainsValue(item.Id) && !item.IsNotTradeable && item.Quality == "6" || item.Defindex == 725)//  || item.Defindex == 5000 || item.Defindex == 5001 || item.Defindex == 5002)
                 {
                     return AddItem (item.Id);
                 }
