@@ -442,7 +442,13 @@ namespace SteamBot
             {
                 Trade.SendMessage("You have chosen to buy weapons! Please type part of the weapon's name into the trade chat and I will try to find that weapon for you. You can also ask for multiple weapons by separating each search term with a \",\" (comma). To tell the bot to remove an item, type \"/remove\" first and hit enter, and then type the item name. For help, type \"help\".");
                 Bot.SteamFriends.SendChatMessage(OtherSID, EChatEntryType.ChatMsg, "You have decided to buy weapons. Check my backpack at http://backpack.tf/id/76561198055217249 to see what I have! Remember the time limit, so make it quick!");
-                buyWeapons = true;
+                if (buyWeapons == false)
+                    buyWeapons = true;
+                else
+                {
+                    buyWeapons = false;
+                    Trade.SendMessage("Exited Buy Mode!");
+                }
             }
             else if (message == "help")
             {
@@ -542,9 +548,14 @@ namespace SteamBot
 
                 Trade.SendMessage("Warning: You have overpayed!");
                 Trade.SendMessage("If you wish to proceed, type \"continue\"");
-                Excess = UserMetalAdded - botWepAdded;
+             //   Excess = UserMetalAdded - botWepAdded;
+                if (buyWeapons == false)
+                    Excess = UserMetalAdded + BotScrapAdded;
+                else
+                    Excess = UserMetalAdded - botWepAdded;
                 Previous_Excess = Excess;
                 Reduction_Add(Excess, 1);
+                Trade.SendMessage("Excess: " + Excess);
                 Trade.SendMessage("Back from Reduction_Add()");
                 change = true;
             }
