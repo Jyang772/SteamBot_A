@@ -167,6 +167,7 @@ namespace SteamBot
 
         public override void OnTradeTimeout()
         {
+            tradeInitiated = false;
             Bot.SteamFriends.SendChatMessage(OtherSID, EChatEntryType.ChatMsg,
                                               "Sorry, but you were either AFK or took too long and the trade was canceled. If you would like to try again, please add yourself to the queue at http://micropenguin.net/tf2");
             Bot.log.Warn("User was kicked because he was AFK.");
