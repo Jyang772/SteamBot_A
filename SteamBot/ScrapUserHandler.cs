@@ -58,6 +58,7 @@ namespace SteamBot
         public bool HasRun = false;
         public bool TimerDisabled = true;
         public bool TimerEnabled = false;
+        public bool tradeInitiated = false;
 
 
         int UserMetalAdded, UserScrapAdded, UserRecAdded, UserRefAdded, BotMetalAdded, BotScrapAdded, BotRecAdded, BotRefAdded, InventoryMetal, InventoryScrap, InventoryRec, InventoryRef, InventoryTickets, OverpayNumKeys, ExcessInScrap, PreviousKeys, WhileLoop, InvalidItem = 0;
@@ -136,7 +137,7 @@ namespace SteamBot
             }
             else if (message == ".canceltrade")
             {
-                if (IsAdmin)
+                if (IsAdmin && tradeInitiated == true)
                 {
                     Trade.CancelTrade();
                     Bot.SteamFriends.SendChatMessage(currentSID, EChatEntryType.ChatMsg, "My creator has forcefully cancelled the trade. Whatever you were doing, he probably wants you to stop.");
@@ -174,6 +175,7 @@ namespace SteamBot
 
         public override void OnTradeInit()
         {
+            tradeInitiated = true;
             Bot.SteamFriends.SetPersonaState(EPersonaState.Busy);
             ReInit();
             Bot.log.Warn("Opened trade with user.");
@@ -191,6 +193,7 @@ namespace SteamBot
             {
                 Trade.CancelTrade();
                 Bot.SteamFriends.SendChatMessage(OtherSID, EChatEntryType.ChatMsg, "Stop messing around. This bot is used for scrapbanking, and he will only accept metal or craftable weapons.");
+                tradeInitiated = false;
             }
             else if ((item.CraftClass == "weapon" || item.CraftMaterialType == "weapon" || item.Defindex == 725) && !inventoryItem.IsNotCraftable)
             {
@@ -533,7 +536,7 @@ namespace SteamBot
             }
 
 
-            if ((UserMetalAdded > botWepAdded && botTicketAdded == 0 && change == false && donate == false && !ready))
+            if ((UserMetalAdded > botWepAdded && botTicketAdded == 0 && change == false && donate == false))
             {
 
                 Trade.SendMessage("Warning: You have overpayed!");
@@ -544,7 +547,7 @@ namespace SteamBot
                 Trade.SendMessage("Back from Reduction_Add()");
                 change = true;
             }
-            else if (UserMetalAdded > ticketSell * botTicketAdded && botTicketAdded > 0 && change == false && donate == false && !ready)
+            else if (UserMetalAdded > ticketSell * botTicketAdded && botTicketAdded > 0 && change == false && donate == false)
             {
 
                 Trade.SendMessage("Warning: You have overpayed!");
@@ -589,6 +592,7 @@ namespace SteamBot
 
         public override void OnTradeClose()
         {
+            tradeInitiated = false;
             Bot.SteamFriends.SetPersonaState(EPersonaState.LookingToTrade);
             base.OnTradeClose();
         }
@@ -728,6 +732,7 @@ namespace SteamBot
             InventoryScrap = 0;
             InventoryRec = 0;
             InventoryRef = 0;
+            
             InventoryTickets = 0;
             WhileLoop = 0;
             InvalidItem = 0;
@@ -741,6 +746,7 @@ namespace SteamBot
             BotScrapAdded = 0;
             BotMetalAdded = 0;
             inventoryScrap = 0;
+            inventoryWeps = 0;
             invalidItem = 0;
             errorMsgRun = false;
             buyWeapons = false;
