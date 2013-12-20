@@ -447,6 +447,9 @@ namespace SteamBot
                 else
                 {
                     buyWeapons = false;
+                    UserMetalAdded = 0;
+                    botWepAdded = 0;
+                    Trade.RemoveAllItems();
                     Trade.SendMessage("Exited Buy Mode!");
                 }
             }
@@ -556,6 +559,7 @@ namespace SteamBot
                 Previous_Excess = Excess;
                 Reduction_Add(Excess, 1);
                 Trade.SendMessage("Excess: " + Excess);
+                Trade.SendMessage("UserMetalAdded: " + UserMetalAdded);
                 Trade.SendMessage("Back from Reduction_Add()");
                 change = true;
             }
