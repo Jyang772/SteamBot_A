@@ -626,7 +626,7 @@ namespace SteamBot
 
             else if (UserMetalAdded != (float)botWepAdded / 1 && botWepAdded > 0 && botTicketAdded == 0 && !IsAdmin && change == false)
             {
-                Trade.SendMessage("Bot Ticket Added: " + botWepAdded);
+                Trade.SendMessage("Bot Weapons Added: " + botWepAdded);
                 Trade.SendMessage("User Metal Added: " + UserMetalAdded);
                 errors.Add("You've added the wrong amount of scrap!");
                 Bot.log.Warn("User has added the wrong amount of scrap!");
